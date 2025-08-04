@@ -133,6 +133,16 @@
   color: #222;
 }
 
+.tech-more-indicator {
+  background: rgba(255,255,255,0.15);
+  font-style: italic;
+  cursor: default;
+}
+.tech-more-indicator:hover {
+  background: rgba(255,255,255,0.25);
+  color: #fff;
+}
+
 .project-link {
   display: inline-block;
   margin-top: 8px;

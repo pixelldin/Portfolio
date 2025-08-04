@@ -7,6 +7,18 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+  const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 900);
+  
+  React.useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 900);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const maxVisibleTech = isMobile ? 3 : 4;
+  const visibleTech = project.tech.slice(0, maxVisibleTech);
+  const remainingCount = project.tech.length - maxVisibleTech;
+
   return (
     <div className="project-card hover-overlay-card">
       {project.hackathonWinner && (
@@ -21,9 +33,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           <h3 className="project-title">{project.title}</h3>
           <div className="project-description">{project.description}</div>
           <div className="project-tech-row">
-            {project.tech.map((tech) => (
+            {visibleTech.map((tech) => (
               <span className="card-duration-pill" key={tech}>{tech}</span>
             ))}
+            {remainingCount > 0 && (
+              <span className="card-duration-pill tech-more-indicator">+{remainingCount} more</span>
+            )}
           </div>
           {project.link && (
             <a
