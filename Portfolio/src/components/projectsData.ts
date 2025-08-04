@@ -52,7 +52,7 @@ export const projects: ProjectData[] = [
   },
   {
     id: 'SFGovTv++',
-    title: 'SFGovTv++',
+    title: 'SFGovTV++',
     description: 'SF board of supervisor meetings cover critical decisions, but run for hours and are inaccessible. We break them down so you can quickly find what matters to you and view what policymakers are saying.',
     image: SFGovTVImg,
     tech: ['beautiful-soup', 'claude', 'fastapi', 'gemini', 'langchain', 'postgresql', 'rag', 'supabase', 'vector-embeddings', 'vite'],
