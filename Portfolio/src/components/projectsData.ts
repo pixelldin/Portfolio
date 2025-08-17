@@ -11,6 +11,7 @@ export interface ProjectData {
   tech: string[];
   link?: string;
   hackathonWinner?: boolean;
+  isHackathon?: boolean;
 }
 
 export const projects: ProjectData[] = [
@@ -22,6 +23,7 @@ export const projects: ProjectData[] = [
     tech: ['d3-force', 'RAG', 'Hugging Face', 'Intel Tiber'],
     link: 'https://devpost.com/software/inciteful',
     hackathonWinner: true,
+    isHackathon: true,
   },
   {
     id: 'bouncer',
@@ -31,6 +33,7 @@ export const projects: ProjectData[] = [
     tech: ['BeautifulSoup', 'Claude', 'Google Custom Search API', 'Flask', 'Resend'],
     link: 'https://devpost.com/software/bouncer-7cvsgz',
     hackathonWinner: false,
+    isHackathon: true,
   },
   {
     id: 'thankmyteacher',
@@ -40,6 +43,7 @@ export const projects: ProjectData[] = [
     tech: ['Google Maps API','Resend', 'React Native', 'Expo', 'Supabase'],
     link: 'https://thankmyteacher.net',
     hackathonWinner: false,
+    isHackathon: false,
   },
   {
     id: 'pillsnap',
@@ -49,6 +53,7 @@ export const projects: ProjectData[] = [
     tech: ['auth0','Flask', 'Gemini API', 'Vertex.ai', 'Selenium'],
     link: 'https://devpost.com/software/pill-snap',
     hackathonWinner: true,
+    isHackathon: true,
   },
   {
     id: 'SFGovTv++',
@@ -58,5 +63,6 @@ export const projects: ProjectData[] = [
     tech: ['beautiful-soup', 'claude', 'fastapi', 'gemini', 'langchain', 'postgresql', 'rag', 'supabase', 'vector-embeddings', 'vite'],
     link: 'https://devpost.com/software/your-city-hall-digest-san-francisco',
     hackathonWinner: true,
+    isHackathon: true,
   }
 ]; 
