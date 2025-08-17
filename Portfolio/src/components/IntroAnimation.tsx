@@ -9,8 +9,8 @@ const MemoizedHyperspeed = React.memo(Hyperspeed);
 const leftMenu = [
   'LOADING YOUR PERSONAL TOUR...',
   'CURATING PROJECT HIGHLIGHTS...',
-  'GATHERING PASSIONS & HOBBIES...',
-  'SETTING THE STAGE FOR CREATIVITY...',
+  'GATHERING CUTE CAT PHOTOS...',
+  'LOADING ANIMATED COMPONENTS ...',
   'PREPARING A UNIQUE EXPERIENCE...',
   'ALMOST READY TO INSPIRE...'
 ];
@@ -21,7 +21,6 @@ const centerDoneText = '( DONE )';
 const centerFinalText = "HELLO, I'M REAGAN! WELCOME TO MY SITE! ";
 
 // Calculate synchronized animation speeds
-const totalSteps = Math.max(leftMenu.length - 1, rightText.length);
 const TOTAL_ANIMATION_DURATION = 3500; // ms, adjust for desired total duration
 const SYNCED_HIGHLIGHT_DELAY = TOTAL_ANIMATION_DURATION / (leftMenu.length - 1);
 const SYNCED_TYPING_SPEED = TOTAL_ANIMATION_DURATION / rightText.length;
@@ -39,13 +38,60 @@ const IntroAnimation = ({ onFinish }: { onFinish: () => void }) => {
   const [fadeOut, setFadeOut] = useState(false);
   const [finalTextIdx, setFinalTextIdx] = useState(0);
   const [fadeIn, setFadeIn] = useState(false); // New state for fade-in
+  const [lastTapTime, setLastTapTime] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   // Step 2: Memoize the options object so its reference is stable across re-renders.
   const hyperspeedOptions = useMemo(() => ({ ...HyperSpeedPresets.one }), []);
 
+  // Detect if device is mobile/tablet
+  useEffect(() => {
+    const checkMobile = () => {
+      const userAgent = navigator.userAgent || navigator.vendor;
+      const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      const isMobileAgent = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+      setIsMobile(isTouchDevice && isMobileAgent);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Skip animation function
+  const skipAnimation = () => {
+    setFadeOut(true);
+    setTimeout(() => onFinish(), 0);
+  };
+
+  // Handle spacebar press for desktop
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (e.code === 'Space' && !fadeOut) {
+        e.preventDefault();
+        skipAnimation();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [fadeOut]);
+
+  // Handle double tap for mobile
+  const handleTouchEnd = () => {
+    const currentTime = Date.now();
+    const tapGap = currentTime - lastTapTime;
+    
+    if (tapGap < 300 && tapGap > 0 && !fadeOut) {
+      skipAnimation();
+    }
+    
+    setLastTapTime(currentTime);
+  };
+
   // Fade-in effect on mount
   useEffect(() => {
-    const timer = setTimeout(() => setFadeIn(true), 800); // 800ms delay (was 400ms)
+    const timer = setTimeout(() => setFadeIn(true), 800); // 800ms delay 
     return () => clearTimeout(timer);
   }, []);
 
@@ -100,11 +146,32 @@ const IntroAnimation = ({ onFinish }: { onFinish: () => void }) => {
   }, [showFinalText, finalTextIdx, onFinish, fadeIn]);
 
   return (
-    <div className={`intro-overlay${fadeOut ? ' fade-out' : ''}${fadeIn ? ' fade-in' : ''}`} style={{ background: 'black', position: 'fixed', inset: 0, zIndex: 9999, overflow: 'hidden' }}>
+    <div 
+      className={`intro-overlay${fadeOut ? ' fade-out' : ''}${fadeIn ? ' fade-in' : ''}`} 
+      style={{ background: 'black', position: 'fixed', inset: 0, zIndex: 9999, overflow: 'hidden' }}
+      onTouchEnd={handleTouchEnd}
+    >
       {/* Use the memoized component with the memoized props */}
       <MemoizedHyperspeed effectOptions={hyperspeedOptions} />
       
       <div style={{ position: 'absolute', zIndex: 1, width: '100%', height: '100%', top: 0, left: 0 }}>
+        {/* Skip hint */}
+        {!fadeOut && (
+          <div style={{
+            position: 'absolute',
+            bottom: '20px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            color: 'rgba(255, 255, 255, 0.4)',
+            fontSize: '0.9rem',
+            fontFamily: 'monospace',
+            letterSpacing: '0.05em',
+            textAlign: 'center',
+            zIndex: 10,
+          }}>
+            {isMobile ? 'Double tap to skip' : 'Press SPACE to skip'}
+          </div>
+        )}
         {!showFinalText ? (
           <div className="intro-terminal">
             <div className="intro-left">
