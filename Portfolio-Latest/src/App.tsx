@@ -238,7 +238,7 @@ function PastPortfoliosSection() {
       date: "2024",
       description: "Interactive portfolio with fluid cursor effects, glassmorphism UI, and advanced animations using React, Three.js, and WebGL.",
       tech: "React, TypeScript, Three.js, GSAP, Framer Motion, Supabase",
-      link: "/v1/index.html"
+      link: "/v1/"
     }
   ];
 

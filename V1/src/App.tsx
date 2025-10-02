@@ -280,7 +280,7 @@ const AppWithRouter = () => {
       {introVisible && <IntroAnimation onFinish={handleIntroFinish} />}
       {!introVisible && (
         <div className={appFadeIn ? 'app-fade-in' : ''}>
-          <BrowserRouter>
+          <BrowserRouter basename="/v1">
             <Routes>
               <Route element={<Layout activeNavItem={activeNavItem} setActiveNavItem={setActiveNavItem} />}>
                 <Route path="/" element={<App />} />
