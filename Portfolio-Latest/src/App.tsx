@@ -69,7 +69,6 @@ export default function App() {
           <Route path="/projects" element={<ProjectsSection />} />
           <Route path="/blog" element={<BlogSection />} />
           <Route path="/archive" element={<PastPortfoliosSection />} />
-          <Route path="/archive/v1" element={<V1Portfolio />} />
           <Route path="/contact" element={<ContactSection />} />
         </Routes>
       </main>
@@ -275,7 +274,7 @@ function PastPortfoliosSection() {
       date: "2024",
       description: "Interactive portfolio with fluid cursor effects, glassmorphism UI, and advanced animations using React, Three.js, and WebGL.",
       tech: "React, TypeScript, Three.js, GSAP, Framer Motion, Supabase",
-      link: "https://reaganhsu.com"
+      link: "/v1/index.html"
     }
   ];
 
@@ -299,40 +298,6 @@ function PastPortfoliosSection() {
             </a>
           </div>
         ))}
-      </div>
-    </div>
-  );
-}
-
-function V1Portfolio() {
-  return (
-    <div className="section">
-      <h2 className="section-heading">V1 Portfolio (2024)</h2>
-
-      <p className="body-text">
-        Interactive portfolio featuring fluid cursor effects, glassmorphism UI, and advanced animations
-        built with React, Three.js, GSAP, and Framer Motion.
-      </p>
-
-      <div className="highlight-section">
-        <h3 className="project-name">Key Features</h3>
-        <p className="body-text">
-          • WebGL-based fluid simulation that follows mouse movement<br/>
-          • Liquid glass morphism UI components with blur effects<br/>
-          • Advanced animations using GSAP and Framer Motion<br/>
-          • Full-screen intro animation with HyperSpeed starfield<br/>
-          • Supabase integration for visitor tracking
-        </p>
-      </div>
-
-      <div className="link-section">
-        <a href="https://reaganhsu.com" target="_blank" rel="noopener noreferrer" className="text-link">
-          view portfolio →
-        </a>
-        <span className="link-separator">·</span>
-        <NavLink to="/archive" className="text-link">
-          ← back to archive
-        </NavLink>
       </div>
     </div>
   );

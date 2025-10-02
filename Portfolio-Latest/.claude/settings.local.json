@@ -6,7 +6,9 @@
       "Bash(npm run dev:*)",
       "Read(//Users/reagan/Documents/GitHub/resumes/Resumes/**)",
       "Bash(npm install:*)",
-      "Read(//Users/reagan/Documents/GitHub/Portfolio/**)"
+      "Read(//Users/reagan/Documents/GitHub/Portfolio/**)",
+      "Bash(npm run build:*)",
+      "Bash(npx vite build:*)"
     ],
     "deny": [],
     "ask": []
