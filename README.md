@@ -1,29 +1,32 @@
-# [Personal Website / Portfolio](https://reaganhsu.com)
+# [Reagan Hsu's Portfolio](https://reaganhsu.com)
 
-An interactive portfolio site built upon the Vite framework. Showcases my projects, resume, and personal interests.
+Portfolio website showcasing my projects, experience, and work.
 
 ## Inspiration
+- **Sun/Moon Dark/Light Mode Toggle and Blog format:** https://www.jos.hn/
+- **Center Column Construction and Spacing and Serif Font:** https://www.thirdlayer.inc/
 
-This project draws inspiration from several amazing open-source projects and creators:
+## Structure
 
-- [Cheryl-Lao/Cheryl-Lao.github.io](https://github.com/Cheryl-Lao/Cheryl-Lao.github.io): Shadow animated hover cards
-- [toukoum/portfolio](https://github.com/toukoum/portfolio): Fluid cursor, blinking dots, internship application format
-- [DavidHDev/react-bits](https://github.com/DavidHDev/react-bits): A variety of useful React elements
-- [Emotion Agency](https://www.awwwards.com/inspiration/interactive-page-loader-emotion-agency-promo): Introduction animation inspo
+- **Portfolio-Latest/** - Current minimalist portfolio (React + TypeScript + Vite + Tailwind)
+- **V1/** - Archived "Liquid Glass" portfolio with advanced animations (React + Three.js + WebGL)
 
-## Pages
+## Current Stack
 
-- **About**: My background, hobbies, and interests.
-- **Projects**: Hackathon and personal projects.
-- **Resume**: My education, experience, and leadership.
-- **Contact**: Get in touch for questions, collaboration, or networking!
-- **Recruiter**: A tailored page for recruiters.
+- React + TypeScript + Vite
+- Tailwind CSS
+- Supabase (visitor tracking)
+- Vercel Analytics
+- React Router
 
-## Technologies Used
+## Setup
 
-- **Frontend**: React, TypeScript, Vite
-- **UI/Animation**: framer-motion, gsap, matter-js, ogl, postprocessing, three.js
+```bash
+cd Portfolio-Latest
+npm install
+npm run dev
+```
 
 ## Contact
 
-For questions or collaboration, please open an issue or reach out via the contact page on the site.
+Reach out via [email](mailto:reaganhsu123@gmail.com) or connect on [LinkedIn](https://linkedin.com/in/reaganhsu)
