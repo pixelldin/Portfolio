@@ -219,49 +219,13 @@ function ContactSection() {
 }
 
 function BlogSection() {
-  const posts = [
-    {
-      title: "Building with AI Agents",
-      date: "Sep 2025",
-      excerpt: "Reflections on building BetterWeb at the YC Agents Hackathon and what I learned about web accessibility through AI-powered automation.",
-      readTime: "5 min read"
-    },
-    {
-      title: "The Browser Use Framework",
-      date: "Sep 2025",
-      excerpt: "How we're shipping a product every day using Browser Use and what it means for the future of web automation.",
-      readTime: "4 min read"
-    },
-    {
-      title: "Hackathons and Rapid Prototyping",
-      date: "Aug 2025",
-      excerpt: "Winning 4 hackathons in 2025: lessons on building fast, thinking differently, and iterating under pressure.",
-      readTime: "6 min read"
-    }
-  ];
-
   return (
     <div className="section">
       <h2 className="section-heading">Writing</h2>
 
       <p className="body-text">
-        Thoughts on AI, software engineering, and building products.
+        Coming soon. Thoughts on AI, software engineering, and building products.
       </p>
-
-      <div className="blog-list">
-        {posts.map((post, index) => (
-          <div key={index} className="blog-item">
-            <div className="blog-header">
-              <h3 className="blog-title">{post.title}</h3>
-              <span className="blog-meta">{post.date} · {post.readTime}</span>
-            </div>
-            <p className="body-text">{post.excerpt}</p>
-            <a href="#" className="text-link">
-              read more →
-            </a>
-          </div>
-        ))}
-      </div>
     </div>
   );
 }
