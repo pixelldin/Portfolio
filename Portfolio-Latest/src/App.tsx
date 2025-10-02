@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
+import { Routes, Route, NavLink } from "react-router-dom";
 
 export default function App() {
-  const [activeSection, setActiveSection] = useState<'home' | 'projects' | 'blog' | 'contact'>('home');
   const [darkMode, setDarkMode] = useState(() => {
     const saved = localStorage.getItem('theme');
     return saved === 'dark';
@@ -23,7 +23,7 @@ export default function App() {
     <div className="portfolio-container">
       <header className="portfolio-header">
         <h1 className="portfolio-title">Reagan Hsu</h1>
-        <p className="portfolio-date">{new Date().toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: 'numeric' })}</p>
+        <p className="portfolio-date">Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric' })}</p>
       </header>
 
       <nav className="portfolio-nav">
@@ -46,37 +46,32 @@ export default function App() {
             </svg>
           )}
         </button>
-        <button
-          className={`nav-link ${activeSection === 'home' ? 'active' : ''}`}
-          onClick={() => setActiveSection('home')}
-        >
+        <NavLink to="/" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
           home
-        </button>
-        <button
-          className={`nav-link ${activeSection === 'projects' ? 'active' : ''}`}
-          onClick={() => setActiveSection('projects')}
-        >
+        </NavLink>
+        <NavLink to="/projects" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
           projects
-        </button>
-        <button
-          className={`nav-link ${activeSection === 'blog' ? 'active' : ''}`}
-          onClick={() => setActiveSection('blog')}
-        >
+        </NavLink>
+        <NavLink to="/blog" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
           blog
-        </button>
-        <button
-          className={`nav-link ${activeSection === 'contact' ? 'active' : ''}`}
-          onClick={() => setActiveSection('contact')}
-        >
+        </NavLink>
+        <NavLink to="/archive" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
+          archive
+        </NavLink>
+        <NavLink to="/contact" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
           contact
-        </button>
+        </NavLink>
       </nav>
 
       <main className="portfolio-content">
-        {activeSection === 'home' && <HomeSection />}
-        {activeSection === 'projects' && <ProjectsSection />}
-        {activeSection === 'blog' && <BlogSection />}
-        {activeSection === 'contact' && <ContactSection />}
+        <Routes>
+          <Route path="/" element={<HomeSection />} />
+          <Route path="/projects" element={<ProjectsSection />} />
+          <Route path="/blog" element={<BlogSection />} />
+          <Route path="/archive" element={<PastPortfoliosSection />} />
+          <Route path="/archive/v1" element={<V1Portfolio />} />
+          <Route path="/contact" element={<ContactSection />} />
+        </Routes>
       </main>
     </div>
   );
@@ -267,6 +262,77 @@ function BlogSection() {
             </a>
           </div>
         ))}
+      </div>
+    </div>
+  );
+}
+
+function PastPortfoliosSection() {
+  const portfolios = [
+    {
+      version: "V1",
+      name: "Liquid Glass Portfolio",
+      date: "2024",
+      description: "Interactive portfolio with fluid cursor effects, glassmorphism UI, and advanced animations using React, Three.js, and WebGL.",
+      tech: "React, TypeScript, Three.js, GSAP, Framer Motion, Supabase",
+      link: "https://reaganhsu.com"
+    }
+  ];
+
+  return (
+    <div className="section">
+      <h2 className="section-heading">Past Portfolios</h2>
+
+      <p className="body-text">
+        A collection of previous portfolio iterations, showcasing different design approaches and technologies.
+      </p>
+
+      <div className="projects-list">
+        {portfolios.map((portfolio, index) => (
+          <div key={index} className="project-item">
+            <h3 className="project-name">{portfolio.name}</h3>
+            <p className="project-tech">{portfolio.version} · {portfolio.date}</p>
+            <p className="body-text">{portfolio.description}</p>
+            <p className="project-tech">{portfolio.tech}</p>
+            <a href={portfolio.link} target="_blank" rel="noopener noreferrer" className="text-link">
+              view portfolio →
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function V1Portfolio() {
+  return (
+    <div className="section">
+      <h2 className="section-heading">V1 Portfolio (2024)</h2>
+
+      <p className="body-text">
+        Interactive portfolio featuring fluid cursor effects, glassmorphism UI, and advanced animations
+        built with React, Three.js, GSAP, and Framer Motion.
+      </p>
+
+      <div className="highlight-section">
+        <h3 className="project-name">Key Features</h3>
+        <p className="body-text">
+          • WebGL-based fluid simulation that follows mouse movement<br/>
+          • Liquid glass morphism UI components with blur effects<br/>
+          • Advanced animations using GSAP and Framer Motion<br/>
+          • Full-screen intro animation with HyperSpeed starfield<br/>
+          • Supabase integration for visitor tracking
+        </p>
+      </div>
+
+      <div className="link-section">
+        <a href="https://reaganhsu.com" target="_blank" rel="noopener noreferrer" className="text-link">
+          view portfolio →
+        </a>
+        <span className="link-separator">·</span>
+        <NavLink to="/archive" className="text-link">
+          ← back to archive
+        </NavLink>
       </div>
     </div>
   );

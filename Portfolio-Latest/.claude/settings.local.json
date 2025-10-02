@@ -4,7 +4,9 @@
       "Read(//var/folders/qz/m7yw0pb15pscg7s49jpqrp7r0000gn/T/TemporaryItems/NSIRD_screencaptureui_byt69I/**)",
       "Bash(npm run dev:frontend:*)",
       "Bash(npm run dev:*)",
-      "Read(//Users/reagan/Documents/GitHub/resumes/Resumes/**)"
+      "Read(//Users/reagan/Documents/GitHub/resumes/Resumes/**)",
+      "Bash(npm install:*)",
+      "Read(//Users/reagan/Documents/GitHub/Portfolio/**)"
     ],
     "deny": [],
     "ask": []
