@@ -8,7 +8,7 @@ Portfolio website showcasing my projects, experience, and work.
 
 ## Structure
 
-- **/Portfolio-Latest** - Current minimalist portfolio (
+- **/Portfolio-Latest** - Current minimalist portfolio
 - **/V1** - Archived "Liquid Glass" portfolio with a few neat animations
 ## Current Stack
 
