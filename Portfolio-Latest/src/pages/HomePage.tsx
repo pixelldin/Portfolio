@@ -2,24 +2,24 @@ export default function HomePage() {
   return (
     <div className="section">
       <p className="intro-text">
-        Computer Science student at UC San Diego. Building products at the intersection of AI and human-computer interaction.
+        Hey, I'm Reagan! I'm a software engineer currently trying to build the future of web automations with browser agents. 
       </p>
 
       <p className="body-text">
-        I work on intelligent systems that make technology more accessible and intuitive.
-        From web accessibility tools to AI agents, I'm focused on creating experiences that adapt to people's needs.
+        I love working on products to make them seamless for users and making people's lives better via software. 
       </p>
 
       <p className="body-text">
-        My background spans frontend development, machine learning research, and product engineering.
-        I believe the best interfaces disappear into the workflow.
+        My day-to-day work mostly spans frontend development and product engineering. You can check out my 100 apps, 100 days series with Browser Use <a href = "https://x.com/browser_use/status/1970297754489589966" target="_blank" rel="noopener noreferrer" className="text-link">here!</a> 
       </p>
 
       <div className="highlight-section">
-        <h2 className="section-heading">Currently</h2>
+        <h2 className="section-heading">Current</h2>
         <p className="body-text">
-          Growth Engineer at Browser Use (YC W25), shipping daily as part of a 100 products in 100 days initiative.
-          Claude Campus Ambassador at Anthropic. Projects Director at ACM UCSD.
+          Growth Engineer at <a href = "https://browser-use.com/" target="_blank" rel="noopener noreferrer" className="text-link">Browser Use (YC W25)</a>, shipping daily (100 apps, 100 days) and helping identify friction points for users. 
+          <br></br>
+          <br></br>
+          Claude Campus Ambassador at <a href = "https://www.claudebuildersucsd.com/" target="_blank" rel="noopener noreferrer" className="text-link">Anthropic</a>, hosting events and helping other students build and learn with AI.
         </p>
       </div>
 
@@ -30,10 +30,6 @@ export default function HomePage() {
         <span className="link-separator">·</span>
         <a href="https://linkedin.com/in/reaganhsu" target="_blank" rel="noopener noreferrer" className="text-link">
           linkedin
-        </a>
-        <span className="link-separator">·</span>
-        <a href="https://reaganhsu.com" target="_blank" rel="noopener noreferrer" className="text-link">
-          website
         </a>
         <span className="link-separator">·</span>
         <a href="mailto:reaganhsu123@gmail.com" className="text-link">

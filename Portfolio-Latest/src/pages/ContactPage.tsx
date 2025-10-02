@@ -24,17 +24,11 @@ export default function ContactPage() {
             /in/reaganhsu
           </a>
         </p>
-        <p className="body-text">
-          <span className="contact-label">Website:</span>{" "}
-          <a href="https://reaganhsu.com" target="_blank" rel="noopener noreferrer" className="text-link">
-            reaganhsu.com
-          </a>
-        </p>
       </div>
 
       <div className="highlight-section">
         <p className="body-text">
-          Feel free to reach out via email or connect with me on any of the platforms above.
+          Feel free to reach out via email or connect with me on any of the platforms above!
         </p>
       </div>
     </div>

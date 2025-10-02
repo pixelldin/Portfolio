@@ -59,6 +59,40 @@ body {
   font-weight: 300;
 }
 
+.stats-container {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  align-items: center;
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.stat-value {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.stat-link {
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.stat-link:hover {
+  opacity: 0.6;
+}
+
+.stat-separator {
+  color: var(--link-separator);
+}
+
 .portfolio-nav {
   display: flex;
   justify-content: center;
@@ -66,6 +100,15 @@ body {
   margin-bottom: 80px;
   border-bottom: 1px solid var(--border-color);
   padding-bottom: 20px;
+  position: relative;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.portfolio-nav .theme-toggle {
+  position: absolute;
+  left: 0;
 }
 
 .nav-link {
@@ -91,6 +134,13 @@ body {
 
 .portfolio-content {
   min-height: 60vh;
+}
+
+.portfolio-footer {
+  margin-top: 80px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border-color);
+  text-align: center;
 }
 
 .section {
@@ -199,6 +249,8 @@ body {
   padding: 0;
   display: flex;
   align-items: center;
+  position: relative;
+  top: 2px;
 }
 
 .theme-toggle:hover {
@@ -245,11 +297,21 @@ body {
     gap: 20px;
   }
 
+  .portfolio-nav .theme-toggle {
+    position: static;
+    order: -1;
+  }
+
   .intro-text {
     font-size: 1.1rem;
   }
 
   .link-section {
     flex-wrap: wrap;
+  }
+
+  .portfolio-footer {
+    margin-top: 60px;
+    padding-top: 30px;
   }
 }

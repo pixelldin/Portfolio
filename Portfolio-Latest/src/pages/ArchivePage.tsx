@@ -15,7 +15,7 @@ export default function ArchivePage() {
       <h2 className="section-heading">Past Portfolios</h2>
 
       <p className="body-text">
-        A collection of previous portfolio iterations, showcasing different design approaches and technologies.
+        A collection of previous portfolio iterations. Thought it would be fun to see as I continue developing. 
       </p>
 
       <div className="projects-list">

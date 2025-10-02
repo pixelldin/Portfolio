@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { Routes, Route, NavLink } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
 import HomePage from "./pages/HomePage";
 import ProjectsPage from "./pages/ProjectsPage";
 import BlogPage from "./pages/BlogPage";
 import ArchivePage from "./pages/ArchivePage";
 import ContactPage from "./pages/ContactPage";
+import Stats from "./components/Stats";
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -28,7 +30,7 @@ export default function App() {
     <div className="portfolio-container">
       <header className="portfolio-header">
         <h1 className="portfolio-title">Reagan Hsu</h1>
-        <p className="portfolio-date">Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
+        <p className="portfolio-date">Last updated: October 2, 2025</p>
       </header>
 
       <nav className="portfolio-nav">
@@ -77,6 +79,11 @@ export default function App() {
           <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </main>
+
+      <footer className="portfolio-footer">
+        <Stats />
+      </footer>
+      <Analytics />
     </div>
   );
 }
