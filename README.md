@@ -8,9 +8,8 @@ Portfolio website showcasing my projects, experience, and work.
 
 ## Structure
 
-- **Portfolio-Latest/** - Current minimalist portfolio (React + TypeScript + Vite + Tailwind)
-- **V1/** - Archived "Liquid Glass" portfolio with advanced animations (React + Three.js + WebGL)
-
+- **/Portfolio-Latest** - Current minimalist portfolio (
+- **/V1** - Archived "Liquid Glass" portfolio with a few neat animations
 ## Current Stack
 
 - React + TypeScript + Vite
