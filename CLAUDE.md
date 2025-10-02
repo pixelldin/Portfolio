@@ -4,14 +4,20 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-An interactive portfolio website built with React, TypeScript, and Vite. The site features advanced animations and visual effects including fluid cursor interactions, liquid glass morphism UI components, and a dynamic intro animation. Deployed on Vercel with analytics.
+A portfolio website repository containing:
+- **Portfolio-Latest/**: The current minimalist portfolio (React, TypeScript, Vite, Tailwind)
+- **V1/**: Previous "Liquid Glass" portfolio with advanced animations, fluid cursor effects, and WebGL (archived and served at `/v1/`)
+
+The current portfolio is a clean, readable design focusing on content. The V1 archive showcases the previous interactive design with glassmorphism UI and advanced visual effects. Both are deployed together on Vercel.
 
 ## Development Commands
 
-**Working Directory**: All development commands should be run from the `Portfolio/` subdirectory.
+### Current Portfolio (Portfolio-Latest/)
+
+**Working Directory**: All development commands should be run from the `Portfolio-Latest/` subdirectory.
 
 ```bash
-cd Portfolio/
+cd Portfolio-Latest/
 
 # Development
 npm run dev          # Start Vite dev server
@@ -25,6 +31,32 @@ npm run lint         # Run ESLint
 # Preview
 npm run preview      # Preview production build
 ```
+
+### V1 Archive Portfolio
+
+The V1 portfolio is a built React app served from `Portfolio-Latest/public/v1/`. It's accessible at `/v1/` when the main site is deployed.
+
+**To update the V1 archive:**
+
+```bash
+# 1. Navigate to V1 source directory
+cd V1/
+
+# 2. Make your changes to the source files
+
+# 3. Build the V1 portfolio (skips TypeScript errors, produces static files)
+npx vite build
+
+# 4. Copy built files to the main portfolio's public directory
+rm -rf ../Portfolio-Latest/public/v1
+cp -r dist ../Portfolio-Latest/public/v1
+```
+
+**Important notes:**
+- V1 uses `basename="/v1"` in BrowserRouter to work correctly when served from `/v1/`
+- V1 uses `base: './'` in vite.config.ts for relative asset paths
+- V1 has its own `.env` file with Supabase credentials (same as Portfolio-Latest)
+- The built V1 files are checked into git in `Portfolio-Latest/public/v1/`
 
 ## Architecture
 
