@@ -1,122 +1,273 @@
-import { useMutation, useQuery } from "convex/react";
-import { api } from "../convex/_generated/api";
+import { useState, useEffect } from "react";
 
 export default function App() {
+  const [activeSection, setActiveSection] = useState<'home' | 'projects' | 'blog' | 'contact'>('home');
+  const [darkMode, setDarkMode] = useState(() => {
+    const saved = localStorage.getItem('theme');
+    return saved === 'dark';
+  });
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [darkMode]);
+
+  const toggleTheme = () => setDarkMode(!darkMode);
+
   return (
-    <>
-      <header className="sticky top-0 z-10 bg-light dark:bg-dark p-4 border-b-2 border-slate-200 dark:border-slate-800">
-        Convex + React
+    <div className="portfolio-container">
+      <header className="portfolio-header">
+        <h1 className="portfolio-title">Reagan Hsu</h1>
+        <p className="portfolio-date">{new Date().toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: 'numeric' })}</p>
       </header>
-      <main className="p-8 flex flex-col gap-16">
-        <h1 className="text-4xl font-bold text-center">Convex + React</h1>
-        <Content />
+
+      <nav className="portfolio-nav">
+        <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
+          {darkMode ? (
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="5"/>
+              <line x1="12" y1="1" x2="12" y2="3"/>
+              <line x1="12" y1="21" x2="12" y2="23"/>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+              <line x1="1" y1="12" x2="3" y2="12"/>
+              <line x1="21" y1="12" x2="23" y2="12"/>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+          ) : (
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          )}
+        </button>
+        <button
+          className={`nav-link ${activeSection === 'home' ? 'active' : ''}`}
+          onClick={() => setActiveSection('home')}
+        >
+          home
+        </button>
+        <button
+          className={`nav-link ${activeSection === 'projects' ? 'active' : ''}`}
+          onClick={() => setActiveSection('projects')}
+        >
+          projects
+        </button>
+        <button
+          className={`nav-link ${activeSection === 'blog' ? 'active' : ''}`}
+          onClick={() => setActiveSection('blog')}
+        >
+          blog
+        </button>
+        <button
+          className={`nav-link ${activeSection === 'contact' ? 'active' : ''}`}
+          onClick={() => setActiveSection('contact')}
+        >
+          contact
+        </button>
+      </nav>
+
+      <main className="portfolio-content">
+        {activeSection === 'home' && <HomeSection />}
+        {activeSection === 'projects' && <ProjectsSection />}
+        {activeSection === 'blog' && <BlogSection />}
+        {activeSection === 'contact' && <ContactSection />}
       </main>
-    </>
+    </div>
   );
 }
 
-function Content() {
-  const { viewer, numbers } =
-    useQuery(api.myFunctions.listNumbers, {
-      count: 10,
-    }) ?? {};
-  const addNumber = useMutation(api.myFunctions.addNumber);
-
-  if (viewer === undefined || numbers === undefined) {
-    return (
-      <div className="mx-auto">
-        <p>loading... (consider a loading skeleton)</p>
-      </div>
-    );
-  }
-
+function HomeSection() {
   return (
-    <div className="flex flex-col gap-8 max-w-lg mx-auto">
-      <p>Welcome {viewer ?? "Anonymous"}!</p>
-      <p>
-        Click the button below and open this page in another window - this data
-        is persisted in the Convex cloud database!
+    <div className="section">
+      <p className="intro-text">
+        Computer Science student at UC San Diego. Building products at the intersection of AI and human-computer interaction.
       </p>
-      <p>
-        <button
-          className="bg-dark dark:bg-light text-light dark:text-dark text-sm px-4 py-2 rounded-md border-2"
-          onClick={() => {
-            void addNumber({ value: Math.floor(Math.random() * 10) });
-          }}
-        >
-          Add a random number
-        </button>
+
+      <p className="body-text">
+        I work on intelligent systems that make technology more accessible and intuitive.
+        From web accessibility tools to AI agents, I'm focused on creating experiences that adapt to people's needs.
       </p>
-      <p>
-        Numbers:{" "}
-        {numbers?.length === 0
-          ? "Click the button!"
-          : (numbers?.join(", ") ?? "...")}
+
+      <p className="body-text">
+        My background spans frontend development, machine learning research, and product engineering.
+        I believe the best interfaces disappear into the workflow.
       </p>
-      <p>
-        Edit{" "}
-        <code className="text-sm font-bold font-mono bg-slate-200 dark:bg-slate-800 px-1 py-0.5 rounded-md">
-          convex/myFunctions.ts
-        </code>{" "}
-        to change your backend
-      </p>
-      <p>
-        Edit{" "}
-        <code className="text-sm font-bold font-mono bg-slate-200 dark:bg-slate-800 px-1 py-0.5 rounded-md">
-          src/App.tsx
-        </code>{" "}
-        to change your frontend
-      </p>
-      <div className="flex flex-col">
-        <p className="text-lg font-bold">Useful resources:</p>
-        <div className="flex gap-2">
-          <div className="flex flex-col gap-2 w-1/2">
-            <ResourceCard
-              title="Convex docs"
-              description="Read comprehensive documentation for all Convex features."
-              href="https://docs.convex.dev/home"
-            />
-            <ResourceCard
-              title="Stack articles"
-              description="Learn about best practices, use cases, and more from a growing
-            collection of articles, videos, and walkthroughs."
-              href="https://www.typescriptlang.org/docs/handbook/2/basic-types.html"
-            />
-          </div>
-          <div className="flex flex-col gap-2 w-1/2">
-            <ResourceCard
-              title="Templates"
-              description="Browse our collection of templates to get started quickly."
-              href="https://www.convex.dev/templates"
-            />
-            <ResourceCard
-              title="Discord"
-              description="Join our developer community to ask questions, trade tips & tricks,
-            and show off your projects."
-              href="https://www.convex.dev/community"
-            />
-          </div>
-        </div>
+
+      <div className="highlight-section">
+        <h2 className="section-heading">Currently</h2>
+        <p className="body-text">
+          Growth Engineer at Browser Use (YC W25), shipping daily as part of a 100 products in 100 days initiative.
+          Claude Campus Ambassador at Anthropic. Projects Director at ACM UCSD.
+        </p>
+      </div>
+
+      <div className="link-section">
+        <a href="https://github.com/Cheggin" target="_blank" rel="noopener noreferrer" className="text-link">
+          github
+        </a>
+        <span className="link-separator">·</span>
+        <a href="https://linkedin.com/in/reaganhsu" target="_blank" rel="noopener noreferrer" className="text-link">
+          linkedin
+        </a>
+        <span className="link-separator">·</span>
+        <a href="https://reaganhsu.com" target="_blank" rel="noopener noreferrer" className="text-link">
+          website
+        </a>
+        <span className="link-separator">·</span>
+        <a href="mailto:reaganhsu123@gmail.com" className="text-link">
+          email
+        </a>
       </div>
     </div>
   );
 }
 
-function ResourceCard({
-  title,
-  description,
-  href,
-}: {
-  title: string;
-  description: string;
-  href: string;
-}) {
+function ProjectsSection() {
+  const projects = [
+    {
+      name: "BetterWeb",
+      award: "1st Place Overall @ Dedalus Labs (YC S25) x YC Agents Hackathon",
+      description: "A web extension that rewrites websites for improved accessibility and customization in real time. Analyzes HTML, CSS, screenshots, and Browser Use agent data to detect and fix accessibility failures affecting 95%+ of top 1M websites.",
+      tech: "Browser Use, Convex, HTML Parsing",
+      link: "https://github.com/Cheggin"
+    },
+    {
+      name: "FinHog",
+      award: "2nd Place Best Financial Visualization Agent @ HackMIT",
+      description: "An agent-driven analytics platform that automatically generates and adapts visualizations for transaction data.",
+      tech: "Claude, React, Agent Architecture",
+      link: "https://github.com/Cheggin"
+    },
+    {
+      name: "CiteTrace",
+      award: "1st Place Overall @ Intel x ACM SCU Hackathon",
+      description: "An app that relationally consolidates research to allow for smooth visualizations of research articles.",
+      tech: "d3-force, Supabase, Expo, Flask, Hugging Face",
+      link: "https://github.com/Cheggin"
+    },
+    {
+      name: "SFGovTV++",
+      award: "3rd Place @ SF10X Hackathon",
+      description: "A website that makes civic engagement in SF as easy as a Google search instead of inaccessible, lengthy videos.",
+      tech: "FastAPI, pgvector, React, LangChain, PostgreSQL",
+      link: "https://github.com/Cheggin"
+    }
+  ];
+
   return (
-    <div className="flex flex-col gap-2 bg-slate-200 dark:bg-slate-800 p-4 rounded-md h-28 overflow-auto">
-      <a href={href} className="text-sm underline hover:no-underline">
-        {title}
-      </a>
-      <p className="text-xs">{description}</p>
+    <div className="section">
+      <h2 className="section-heading">Selected Work</h2>
+
+      <div className="projects-list">
+        {projects.map((project, index) => (
+          <div key={index} className="project-item">
+            <h3 className="project-name">{project.name}</h3>
+            {project.award && <p className="project-tech">{project.award}</p>}
+            <p className="body-text">{project.description}</p>
+            <p className="project-tech">{project.tech}</p>
+            <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-link">
+              view project →
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ContactSection() {
+  return (
+    <div className="section">
+      <h2 className="section-heading">Get in touch</h2>
+
+      <p className="body-text">
+        I'm always interested in hearing about new opportunities, collaborations, or just chatting
+        about technology.
+      </p>
+
+      <div className="contact-info">
+        <p className="body-text">
+          <span className="contact-label">Email:</span> reaganhsu123@gmail.com
+        </p>
+        <p className="body-text">
+          <span className="contact-label">GitHub:</span>{" "}
+          <a href="https://github.com/Cheggin" target="_blank" rel="noopener noreferrer" className="text-link">
+            @Cheggin
+          </a>
+        </p>
+        <p className="body-text">
+          <span className="contact-label">LinkedIn:</span>{" "}
+          <a href="https://linkedin.com/in/reaganhsu" target="_blank" rel="noopener noreferrer" className="text-link">
+            /in/reaganhsu
+          </a>
+        </p>
+        <p className="body-text">
+          <span className="contact-label">Website:</span>{" "}
+          <a href="https://reaganhsu.com" target="_blank" rel="noopener noreferrer" className="text-link">
+            reaganhsu.com
+          </a>
+        </p>
+      </div>
+
+      <div className="highlight-section">
+        <p className="body-text">
+          Feel free to reach out via email or connect with me on any of the platforms above.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function BlogSection() {
+  const posts = [
+    {
+      title: "Building with AI Agents",
+      date: "Sep 2025",
+      excerpt: "Reflections on building BetterWeb at the YC Agents Hackathon and what I learned about web accessibility through AI-powered automation.",
+      readTime: "5 min read"
+    },
+    {
+      title: "The Browser Use Framework",
+      date: "Sep 2025",
+      excerpt: "How we're shipping a product every day using Browser Use and what it means for the future of web automation.",
+      readTime: "4 min read"
+    },
+    {
+      title: "Hackathons and Rapid Prototyping",
+      date: "Aug 2025",
+      excerpt: "Winning 4 hackathons in 2025: lessons on building fast, thinking differently, and iterating under pressure.",
+      readTime: "6 min read"
+    }
+  ];
+
+  return (
+    <div className="section">
+      <h2 className="section-heading">Writing</h2>
+
+      <p className="body-text">
+        Thoughts on AI, software engineering, and building products.
+      </p>
+
+      <div className="blog-list">
+        {posts.map((post, index) => (
+          <div key={index} className="blog-item">
+            <div className="blog-header">
+              <h3 className="blog-title">{post.title}</h3>
+              <span className="blog-meta">{post.date} · {post.readTime}</span>
+            </div>
+            <p className="body-text">{post.excerpt}</p>
+            <a href="#" className="text-link">
+              read more →
+            </a>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
