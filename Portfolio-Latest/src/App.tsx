@@ -4,6 +4,9 @@ import { Analytics } from "@vercel/analytics/react";
 import HomePage from "./pages/HomePage";
 import ProjectsPage from "./pages/ProjectsPage";
 import BlogPage from "./pages/BlogPage";
+import BlogPostPage from "./pages/BlogPostPage";
+import InterestsPage from "./pages/InterestsPage";
+import InterestPage from "./pages/InterestPage";
 import ArchivePage from "./pages/ArchivePage";
 import ContactPage from "./pages/ContactPage";
 import Stats from "./components/Stats";
@@ -62,6 +65,9 @@ export default function App() {
         <NavLink to="/blog" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
           blog
         </NavLink>
+        <NavLink to="/interests" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
+          interests
+        </NavLink>
         <NavLink to="/archive" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
           archive
         </NavLink>
@@ -75,6 +81,9 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:id" element={<BlogPostPage />} />
+          <Route path="/interests" element={<InterestsPage />} />
+          <Route path="/interests/:id" element={<InterestPage />} />
           <Route path="/archive" element={<ArchivePage />} />
           <Route path="/contact" element={<ContactPage />} />
         </Routes>

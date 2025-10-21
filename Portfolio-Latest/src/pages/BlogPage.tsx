@@ -1,49 +1,46 @@
 /*
  * BLOG POST FORMATTING GUIDE
  *
- * To add a new blog post, add an object to the blogPosts array below with this structure:
+ * To add a new blog post, create a new .mdx file in src/content/blog/
  *
- * {
- *   id: "unique-slug-for-url",
- *   title: "Your Blog Post Title",
- *   date: "Month DD, YYYY",
- *   readTime: "X min read",
- *   excerpt: "A brief 1-2 sentence summary that appears in the blog list view",
- *   tags: ["tag1", "tag2", "tag3"],
- *   content: `
- *     Full blog post content goes here. You can use plain text or markdown.
+ * Format:
+ * ---
+ * title: "Your Blog Post Title"
+ * date: "Month DD, YYYY"
+ * readTime: "X min read"
+ * excerpt: "A brief summary that appears in the blog list view"
+ * tags: ["tag1", "tag2"]
+ * ---
  *
- *     Use multiple paragraphs, lists, code snippets, etc.
- *   `
- * }
+ * # Your content here
+ *
+ * Write your blog post using Markdown or MDX (React components)!
  */
 
-interface BlogPost {
-  id: string;
-  title: string;
-  date: string;
-  readTime: string;
-  excerpt: string;
-  tags: string[];
-  content: string;
-}
-
-const blogPosts: BlogPost[] = [
-    // Example:
-    // {
-    //   id: STRING,
-    //   title: STRING,
-    //   date: "MM DD, YYYY",
-    //   readTime: "X min read",
-    //   excerpt: STRING,
-    //   tags: ["STRING", "STRING", "STRING"],
-    //   content: `
-    //     Content goes here...
-    //   `
-    // }
-    ];
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { loadBlogPosts, BlogPost } from '../utils/loadBlogPosts';
 
 export default function BlogPage() {
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    loadBlogPosts().then((posts) => {
+      setBlogPosts(posts);
+      setLoading(false);
+    });
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="section">
+        <h2 className="section-heading">Writing</h2>
+        <p className="body-text">Loading...</p>
+      </div>
+    );
+  }
+
   if (blogPosts.length === 0) {
     return (
       <div className="section">
@@ -90,16 +87,29 @@ export default function BlogPage() {
 
             {/* Right side: Title and description */}
             <div>
-              <h3 style={{
-                fontSize: '1.25rem',
-                marginBottom: '0.75rem',
-                fontWeight: '400',
-                borderBottom: '1px solid rgba(255, 255, 255, 0.8)',
-                paddingBottom: '2px',
-                display: 'inline-block'
-              }}>
-                {post.title}
-              </h3>
+              <Link
+                to={`/blog/${post.id}`}
+                style={{
+                  textDecoration: 'none',
+                  color: 'inherit'
+                }}
+              >
+                <h3 style={{
+                  fontSize: '1.25rem',
+                  marginBottom: '0.75rem',
+                  fontWeight: '400',
+                  borderBottom: '1px solid rgba(255, 255, 255, 0.8)',
+                  paddingBottom: '2px',
+                  display: 'inline-block',
+                  cursor: 'pointer',
+                  transition: 'border-color 0.2s'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 1)'}
+                onMouseLeave={(e) => e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.8)'}
+                >
+                  {post.title}
+                </h3>
+              </Link>
 
               <p style={{
                 color: 'rgba(255, 255, 255, 0.7)',

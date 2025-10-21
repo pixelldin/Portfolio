@@ -8,7 +8,12 @@
       "Bash(npm install:*)",
       "Read(//Users/reagan/Documents/GitHub/Portfolio/**)",
       "Bash(npm run build:*)",
-      "Bash(npx vite build:*)"
+      "Bash(npx vite build:*)",
+      "Read(//var/folders/d9/9cw1kj7n3qs1m5cgp_9hh4vh0000gn/T/TemporaryItems/NSIRD_screencaptureui_JC6H7T/**)",
+      "Read(//var/folders/d9/9cw1kj7n3qs1m5cgp_9hh4vh0000gn/T/TemporaryItems/NSIRD_screencaptureui_GK88wt/**)",
+      "WebSearch",
+      "WebFetch(domain:mintlify.com)",
+      "Bash(npm uninstall:*)"
     ],
     "deny": [],
     "ask": []

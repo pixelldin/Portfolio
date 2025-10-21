@@ -25,14 +25,22 @@
 }
 
 body {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background-color: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.8;
   font-size: 16px;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* All headings use Space Grotesk */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .portfolio-container {
@@ -47,19 +55,22 @@ body {
 }
 
 .portfolio-title {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 2.5rem;
-  font-weight: 400;
+  font-weight: 800;
   margin-bottom: 12px;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.03em;
 }
 
 .portfolio-date {
+  font-family: 'DM Sans', sans-serif;
   font-size: 0.95rem;
   color: var(--text-muted);
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .stats-container {
+  font-family: 'DM Sans', sans-serif;
   display: flex;
   justify-content: center;
   gap: 12px;
@@ -67,6 +78,7 @@ body {
   margin-top: 12px;
   font-size: 0.9rem;
   color: var(--text-muted);
+  font-weight: 500;
 }
 
 .stat-item {
@@ -76,7 +88,7 @@ body {
 }
 
 .stat-value {
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-primary);
 }
 
@@ -100,6 +112,8 @@ body {
   margin-bottom: 80px;
   border-bottom: 1px solid var(--border-color);
   padding-bottom: 20px;
+  padding-left: 60px;
+  padding-right: 60px;
   position: relative;
   max-width: 680px;
   margin-left: auto;
@@ -114,8 +128,9 @@ body {
 .nav-link {
   background: none;
   border: none;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'DM Sans', sans-serif;
   font-size: 1rem;
+  font-weight: 500;
   color: var(--text-muted);
   cursor: pointer;
   transition: color 0.2s ease;
@@ -129,7 +144,7 @@ body {
 
 .nav-link.active {
   color: var(--text-primary);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .portfolio-content {
@@ -159,24 +174,29 @@ body {
 }
 
 .intro-text {
+  font-family: 'DM Sans', sans-serif;
   font-size: 1.25rem;
   line-height: 1.7;
   margin-bottom: 40px;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .body-text {
+  font-family: 'DM Sans', sans-serif;
   font-size: 1rem;
   line-height: 1.8;
   margin-bottom: 24px;
   color: var(--text-secondary);
+  font-weight: 400;
 }
 
 .section-heading {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 24px;
   margin-top: 48px;
+  letter-spacing: -0.02em;
 }
 
 .highlight-section {
@@ -192,9 +212,11 @@ body {
 }
 
 .text-link {
+  font-family: 'DM Sans', sans-serif;
   color: var(--text-primary);
   text-decoration: underline;
   transition: opacity 0.2s ease;
+  font-weight: 500;
 }
 
 .text-link:hover {
@@ -218,16 +240,20 @@ body {
 }
 
 .project-name {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 12px;
+  letter-spacing: -0.02em;
 }
 
 .project-tech {
+  font-family: 'DM Sans', sans-serif;
   font-size: 0.9rem;
   color: var(--text-muted);
   margin-bottom: 12px;
   margin-top: -8px;
+  font-weight: 400;
 }
 
 .contact-info {
@@ -236,7 +262,8 @@ body {
 }
 
 .contact-label {
-  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
   color: var(--text-primary);
 }
 
@@ -274,14 +301,18 @@ body {
 }
 
 .blog-title {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 8px;
+  letter-spacing: -0.02em;
 }
 
 .blog-meta {
+  font-family: 'DM Sans', sans-serif;
   font-size: 0.9rem;
   color: var(--text-muted);
+  font-weight: 400;
 }
 
 @media (max-width: 768px) {
@@ -314,4 +345,110 @@ body {
     margin-top: 60px;
     padding-top: 30px;
   }
+}
+
+/* Blog content styles for MDX */
+.blog-content h1 {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 2rem;
+  margin: 2rem 0 1rem 0;
+  font-weight: 700;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.blog-content h2 {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.5rem;
+  margin: 1.75rem 0 1rem 0;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.blog-content h3 {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.25rem;
+  margin: 1.5rem 0 0.75rem 0;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.blog-content p {
+  font-family: 'DM Sans', sans-serif;
+  margin: 1rem 0;
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+.blog-content ul,
+.blog-content ol {
+  font-family: 'DM Sans', sans-serif;
+  margin: 1rem 0;
+  padding-left: 2rem;
+  font-weight: 400;
+}
+
+.blog-content li {
+  margin: 0.5rem 0;
+  line-height: 1.8;
+}
+
+.blog-content code {
+  background: var(--border-color);
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-family: 'Geist Mono', 'Menlo', 'Monaco', monospace;
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+.blog-content pre {
+  background: var(--border-color);
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  font-family: 'Geist Mono', 'Menlo', 'Monaco', monospace;
+}
+
+.blog-content pre code {
+  background: none;
+  padding: 0;
+  font-family: 'Geist Mono', 'Menlo', 'Monaco', monospace;
+}
+
+.blog-content a {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text-primary);
+  text-decoration: underline;
+  transition: opacity 0.2s;
+  font-weight: 500;
+}
+
+.blog-content a:hover {
+  opacity: 0.7;
+}
+
+.blog-content blockquote {
+  font-family: 'DM Sans', sans-serif;
+  border-left: 3px solid var(--border-color);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.blog-content img {
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem 0;
+  border-radius: 6px;
+}
+
+.blog-content hr {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 2rem 0;
 }
