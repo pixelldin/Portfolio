@@ -39,6 +39,14 @@ export default function ProjectsPage() {
       description: "Makes civic engagement accessible through keyword search of 5TB of SF government video data with RAG chatbot assistance.",
       tech: "pgvector, React Native, Supabase, FastAPI",
       link: "https://devpost.com/software/your-city-hall-digest-san-francisco"
+    }, 
+    {
+        name: "CARP",
+        award: "3rd Place Overall @ SushiHacks 2025",
+        date: "Oct. 2025",
+        description: "CARP is an all-in-one app for fishermen, processing >15k fish data points to optimize fishing location while providing a wrist brace to detect carpal tunnel syndrome early.",
+        tech: "Browser Use, React Native, FastAPI, Arduino",
+        link: "https://github.com/Cheggin/sushihacks2025/tree/main"
     }
   ];
 

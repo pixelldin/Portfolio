@@ -1,59 +1,28 @@
-import { useState, useEffect } from 'react';
-import { supabase } from '../supabaseClient';
+import { useState, useEffect, useRef } from 'react';
+import { useMutation, useQuery } from 'convex/react';
+import { api } from '../../convex/_generated/api';
 
 export default function Stats() {
-  const [visitorCount, setVisitorCount] = useState<number | null>(null);
   const [githubStars, setGithubStars] = useState<number | null>(null);
+  const views = useQuery(api.myFunctions.getViews);
+  const incrementViews = useMutation(api.myFunctions.incrementViews);
+  const hasIncrementedRef = useRef(false);
 
   useEffect(() => {
     const sessionKey = 'portfolioVisitorCounted';
     const hasCounted = sessionStorage.getItem(sessionKey);
 
-    const fetchAndIncrement = async () => {
-      try {
-        if (!hasCounted) {
-          // Increment the count atomically in Supabase
-          const { data, error } = await supabase.rpc('increment_visitor_count');
-          if (!error && data !== null) {
-            setVisitorCount(data);
-            sessionStorage.setItem(sessionKey, 'true');
-          } else {
-            console.error('Error incrementing visitor count:', error);
-            // fallback: just fetch the count
-            const { data: row, error: fetchError } = await supabase
-              .from('visitor_count')
-              .select('count')
-              .eq('id', 1)
-              .single();
-            if (fetchError) {
-              console.error('Error fetching visitor count:', fetchError);
-              setVisitorCount(0);
-            } else {
-              setVisitorCount(row?.count || 0);
-              sessionStorage.setItem(sessionKey, 'true');
-            }
-          }
-        } else {
-          // Just fetch the count
-          const { data: row, error } = await supabase
-            .from('visitor_count')
-            .select('count')
-            .eq('id', 1)
-            .single();
-          if (error) {
-            console.error('Error fetching visitor count:', error);
-            setVisitorCount(0);
-          } else {
-            setVisitorCount(row?.count || 0);
-          }
-        }
-      } catch (error) {
-        console.error('Error in fetchAndIncrement:', error);
-        setVisitorCount(0);
-      }
-    };
-    fetchAndIncrement();
-  }, []);
+    if (!hasCounted && incrementViews && !hasIncrementedRef.current) {
+      hasIncrementedRef.current = true;
+      incrementViews()
+        .then(() => {
+          sessionStorage.setItem(sessionKey, 'true');
+        })
+        .catch((error) => {
+          console.error('Error incrementing views:', error);
+        });
+    }
+  }, [incrementViews]);
 
   // Fetch GitHub star count
   useEffect(() => {
@@ -82,7 +51,7 @@ export default function Stats() {
   return (
     <div className="stats-container">
       <span className="stat-item">
-        {visitorCount !== null ? visitorCount.toLocaleString() : '...'} views
+        {views !== undefined ? views.toLocaleString() : '...'} views
       </span>
       <span className="stat-separator">·</span>
       <a

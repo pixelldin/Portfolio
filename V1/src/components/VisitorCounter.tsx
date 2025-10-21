@@ -1,44 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import CountUp from './CountUp';
 import { FaRegStar, FaEye } from 'react-icons/fa';
-import { supabase } from '../supabaseClient';
+import { useMutation, useQuery } from 'convex/react';
+import { api } from '../../convex/_generated/api';
 
 const VisitorCounter: React.FC = () => {
-  const [visitorCount, setVisitorCount] = useState(0);
   const [githubStars, setGithubStars] = useState(0);
+  const views = useQuery(api.myFunctions.getViews);
+  const incrementViews = useMutation(api.myFunctions.incrementViews);
+  const hasIncrementedRef = useRef(false);
 
   useEffect(() => {
     const sessionKey = 'portfolioVisitorCounted';
     const hasCounted = sessionStorage.getItem(sessionKey);
 
-    const fetchAndIncrement = async () => {
-      if (!hasCounted) {
-        // Increment the count atomically in Supabase
-        const { data, error } = await supabase.rpc('increment_visitor_count');
-        if (!error && data !== null) {
-          setVisitorCount(data);
-        } else {
-          // fallback: just fetch the count
-          const { data: row, error: fetchError } = await supabase
-            .from('visitor_count')
-            .select('count')
-            .eq('id', 1)
-            .single();
-          setVisitorCount(row?.count || 0);
-        }
-        sessionStorage.setItem(sessionKey, 'true');
-      } else {
-        // Just fetch the count
-        const { data: row, error } = await supabase
-          .from('visitor_count')
-          .select('count')
-          .eq('id', 1)
-          .single();
-        setVisitorCount(row?.count || 0);
-      }
-    };
-    fetchAndIncrement();
-  }, []);
+    if (!hasCounted && incrementViews && !hasIncrementedRef.current) {
+      hasIncrementedRef.current = true;
+      incrementViews()
+        .then(() => {
+          sessionStorage.setItem(sessionKey, 'true');
+        })
+        .catch((error) => {
+          console.error('Error incrementing views:', error);
+        });
+    }
+  }, [incrementViews]);
 
   // Fetch GitHub star count
   useEffect(() => {
@@ -158,10 +144,10 @@ const VisitorCounter: React.FC = () => {
         <div style={counterStyle}>
           <FaEye style={{ fontSize: '16px' }} />
           <span>
-            <CountUp 
-              to={visitorCount} 
+            <CountUp
+              to={views ?? 0}
               duration={1.5}
-              separator="," 
+              separator=","
             />
             <span style={{ marginLeft: '4px', opacity: 0.8 }}>Views</span>
           </span>

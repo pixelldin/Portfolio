@@ -1,0 +1,1 @@
+- to memorize whenever editing my personal portfolio, never make edits to archived sites. always work on /Portfolio-Latest. Also, make sure that changes are stylistically in line with the rest of the portfolio.
