@@ -1,12 +1,12 @@
 export default function ProjectsPage() {
   const projects = [
     {
-      name: "BetterWeb",
-      award: "1st Place Overall + Best Use of Web Agents @ Dedalus Labs (YC S25) x YC Agents Hackathon",
-      date: "Aug. 2025",
-      description: "A web extension that rewrites websites for improved accessibility and customization in real time using deep agentic search and user-focused UI reconstruction.",
-      tech: "Browser Use, Convex, Vite",
-      link: "https://www.linkedin.com/feed/update/urn:li:activity:7365805210167885824/"
+      name: "CI/CD Pipeline with Jenkins and Docker",
+      award: "A complete end-to-end CI/CD pipeline project",
+      date: "Sep. 2025",
+      description: "Where source code is pushed to GitHub, automatically built by Jenkins using Maven, and deployed to a Tomcat server. The setup extends to containerization the generated .war file is packaged into a Docker image and deployed on a Docker container for scalable delivery.",
+      tech: "Terraform, GitHub, Jenkins, Maven, Tomcat, Docker, AWS EC2",
+      link: "https://github.com/pixelldin/CI-CD-Project/"
     },
     {
       name: "Job Use",
