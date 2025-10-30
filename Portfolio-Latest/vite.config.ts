@@ -7,9 +7,13 @@ import remarkGfm from "remark-gfm";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 
-const repoName = "Portfolio"; // your GitHub repo name
+// CRITICAL STEP: Replace the empty string below with the EXACT name of your GitHub repository.
+const repoName = "YOUR_REPO_NAME"; 
 
 export default defineConfig(({ command }) => ({
+  // The 'base' setting determines the root path for assets and the BASE_URL environment variable.
+  // command === 'serve' is for local development (npm run dev)
+  // command === 'build' is for production (npm run build)
   base: command === "serve" ? "/" : `/${repoName}/`,
   plugins: [
     {
