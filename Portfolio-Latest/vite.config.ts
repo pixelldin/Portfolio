@@ -8,8 +8,12 @@ import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 
 // https://vite.dev/config/
-export default defineConfig({
-  base: "/Portfolio/", // 👈 ADD THIS LINE (your repo name)
+export default defineConfig(({ command }) => ({
+  // Dynamically switch base based on environment
+  // 🧠 "serve" = local dev (uses subfolder path)
+  // 🧠 "build" = production (custom domain = root)
+  base: command === "serve" ? "/Portfolio/" : "/",
+
   plugins: [
     {
       enforce: "pre",
@@ -31,9 +35,10 @@ export default defineConfig({
       },
     },
   ],
+
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
-});
+}));
