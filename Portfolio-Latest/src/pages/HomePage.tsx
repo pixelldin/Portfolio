@@ -2,37 +2,37 @@ export default function HomePage() {
   return (
     <div className="section">
       <p className="intro-text">
-        Hey, I'm Reagan! I'm a software engineer currently trying to build the future of web automations with browser agents. 
+        Hey, I’m Dinesh a DevOps engineer specializing in CI/CD, cloud automation, and containerized deployments.
       </p>
 
       <p className="body-text">
-        I love working on products to make them seamless for users and making people's lives better via software. 
+        I love building infrastructure that just works fast, stable, and effortless for developers to deploy and manage. 
       </p>
 
       <p className="body-text">
-        My day-to-day work mostly spans frontend development and product engineering. You can check out my 100 apps, 100 days series with Browser Use <a href = "https://x.com/browser_use/status/1970297754489589966" target="_blank" rel="noopener noreferrer" className="text-link">here!</a> 
+         My work revolves around cloud automation, CI/CD pipelines, and making production environments reliable under pressure.
       </p>
 
       <div className="highlight-section">
         <h2 className="section-heading">Current</h2>
         <p className="body-text">
-          Growth Engineer at <a href = "https://browser-use.com/" target="_blank" rel="noopener noreferrer" className="text-link">Browser Use (YC W25)</a>, shipping daily (100 apps, 100 days) and helping identify friction points for users. 
+          Right now, I’m focused on improving deployment speed, optimizing cloud costs, and strengthening monitoring through automation and container orchestration.
           <br></br>
           <br></br>
-          Claude Campus Ambassador at <a href = "https://www.claudebuildersucsd.com/" target="_blank" rel="noopener noreferrer" className="text-link">Anthropic</a>, hosting events and helping other students build and learn with AI.
+          Technical  Engineer at [GXO] helping teams automate workflows, scale efficiently on AWS, and deliver faster with zero downtime.
         </p>
       </div>
 
       <div className="link-section">
-        <a href="https://github.com/Cheggin" target="_blank" rel="noopener noreferrer" className="text-link">
+        <a href="https://github.com/pixelldin" target="_blank" rel="noopener noreferrer" className="text-link">
           github
         </a>
         <span className="link-separator">·</span>
-        <a href="https://linkedin.com/in/reaganhsu" target="_blank" rel="noopener noreferrer" className="text-link">
+        <a href="https://www.linkedin.com/in/dinesh-p-51573b259/" target="_blank" rel="noopener noreferrer" className="text-link">
           linkedin
         </a>
         <span className="link-separator">·</span>
-        <a href="mailto:reaganhsu123@gmail.com" className="text-link">
+        <a href="mailto:dineshdi.cc@gmail.com" className="text-link">
           email
         </a>
       </div>

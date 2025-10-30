@@ -10,18 +10,18 @@ export default function ContactPage() {
 
       <div className="contact-info">
         <p className="body-text">
-          <span className="contact-label">Email:</span> reaganhsu123@gmail.com
+          <span className="contact-label">Email:</span> Dineshdi.cc@gmail.com
         </p>
         <p className="body-text">
           <span className="contact-label">GitHub:</span>{" "}
-          <a href="https://github.com/Cheggin" target="_blank" rel="noopener noreferrer" className="text-link">
-            @Cheggin
+          <a href="https://github.com/pixelldin" target="_blank" rel="noopener noreferrer" className="text-link">
+            @dinesh
           </a>
         </p>
         <p className="body-text">
           <span className="contact-label">LinkedIn:</span>{" "}
-          <a href="https://linkedin.com/in/reaganhsu" target="_blank" rel="noopener noreferrer" className="text-link">
-            /in/reaganhsu
+          <a href="https://www.linkedin.com/in/dinesh-p-51573b259/" target="_blank" rel="noopener noreferrer" className="text-link">
+            /in/dinesh
           </a>
         </p>
       </div>

@@ -46,7 +46,7 @@ export default function BlogPage() {
       <div className="section">
         <h2 className="section-heading">Writing</h2>
         <p className="body-text">
-          Coming soon. Thoughts on AI, software engineering, and building products.
+          Coming soon. Notes on scaling systems, automating workflows, and improving deployment pipelines.
         </p>
       </div>
     );

@@ -32,8 +32,8 @@ export default function App() {
   return (
     <div className="portfolio-container">
       <header className="portfolio-header">
-        <h1 className="portfolio-title">Reagan Hsu</h1>
-        <p className="portfolio-date">Last updated: October 2, 2025</p>
+        <h1 className="portfolio-title">Dinesh P</h1>
+        <p className="portfolio-date">Last updated: October 28, 2025</p>
       </header>
 
       <nav className="portfolio-nav">
@@ -68,9 +68,9 @@ export default function App() {
         <NavLink to="/interests" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
           interests
         </NavLink>
-        <NavLink to="/archive" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
+        {/*<NavLink to="/archive" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
           archive
-        </NavLink>
+        </NavLink>*/}
         <NavLink to="/contact" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
           contact
         </NavLink>
@@ -84,7 +84,7 @@ export default function App() {
           <Route path="/blog/:id" element={<BlogPostPage />} />
           <Route path="/interests" element={<InterestsPage />} />
           <Route path="/interests/:id" element={<InterestPage />} />
-          <Route path="/archive" element={<ArchivePage />} />
+          {/*<Route path="/archive" element={<ArchivePage />} />*/}
           <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </main>
