@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//var/folders/qz/m7yw0pb15pscg7s49jpqrp7r0000gn/T/TemporaryItems/NSIRD_screencaptureui_byt69I/**)",
+      "Bash(npm run dev:frontend:*)",
+      "Bash(npm run dev:*)",
+      "Read(//Users/reagan/Documents/GitHub/resumes/Resumes/**)",
+      "Bash(npm install:*)",
+      "Read(//Users/reagan/Documents/GitHub/Portfolio/**)",
+      "Bash(npm run build:*)",
+      "Bash(npx vite build:*)",
+      "Read(//var/folders/d9/9cw1kj7n3qs1m5cgp_9hh4vh0000gn/T/TemporaryItems/NSIRD_screencaptureui_JC6H7T/**)",
+      "Read(//var/folders/d9/9cw1kj7n3qs1m5cgp_9hh4vh0000gn/T/TemporaryItems/NSIRD_screencaptureui_GK88wt/**)",
+      "WebSearch",
+      "WebFetch(domain:mintlify.com)",
+      "Bash(npm uninstall:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
