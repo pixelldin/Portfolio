@@ -1,4 +1,3 @@
-# Reagan Hsu's Portfolio
 
 Minimalist portfolio website built with React, TypeScript, and Vite.
 
