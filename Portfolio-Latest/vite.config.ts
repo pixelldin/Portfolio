@@ -7,13 +7,10 @@ import remarkGfm from "remark-gfm";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 
-// https://vite.dev/config/
-export default defineConfig(({ command }) => ({
-  // Dynamically switch base based on environment
-  // 🧠 "serve" = local dev (uses subfolder path)
-  // 🧠 "build" = production (custom domain = root)
-  base: command === "serve" ? "/Portfolio/" : "/",
+const repoName = "Portfolio"; // your GitHub repo name
 
+export default defineConfig(({ command }) => ({
+  base: command === "serve" ? "/" : `/${repoName}/`,
   plugins: [
     {
       enforce: "pre",
@@ -35,7 +32,6 @@ export default defineConfig(({ command }) => ({
       },
     },
   ],
-
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
