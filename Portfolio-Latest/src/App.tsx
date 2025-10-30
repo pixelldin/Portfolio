@@ -7,7 +7,7 @@ import BlogPage from "./pages/BlogPage";
 import BlogPostPage from "./pages/BlogPostPage";
 import InterestsPage from "./pages/InterestsPage";
 import InterestPage from "./pages/InterestPage";
-import ArchivePage from "./pages/ArchivePage";
+{/*import ArchivePage from "./pages/ArchivePage";*/}
 import ContactPage from "./pages/ContactPage";
 import Stats from "./components/Stats";
 

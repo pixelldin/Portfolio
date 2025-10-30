@@ -9,6 +9,7 @@ import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: "/Portfolio/", // 👈 ADD THIS LINE (your repo name)
   plugins: [
     {
       enforce: "pre",
