@@ -8,7 +8,7 @@ export default function ProjectsPage() {
       tech: "Terraform, GitHub, Jenkins, Maven, Tomcat, Docker, AWS EC2",
       link: "https://github.com/pixelldin/CI-CD-Project/"
     },
-    {
+    {/*{
       name: "Job Use",
       award: "3rd Place + 2nd Place SonicJobs Prize @ AGI House Web Agent Build Day",
       date: "Sep. 2025",
@@ -47,7 +47,7 @@ export default function ProjectsPage() {
         description: "CARP is an all-in-one app for fishermen, processing >15k fish data points to optimize fishing location while providing a wrist brace to detect carpal tunnel syndrome early.",
         tech: "Browser Use, React Native, FastAPI, Arduino",
         link: "https://github.com/Cheggin/sushihacks2025/tree/main"
-    }
+    */}
   ];
 
   return (
