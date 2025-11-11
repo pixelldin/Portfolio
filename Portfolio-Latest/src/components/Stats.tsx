@@ -55,7 +55,7 @@ export default function Stats() {
       </span>
       <span className="stat-separator">·</span>
       <a
-        href="https://github.com/Cheggin/Portfolio"
+        href="https://github.com/pixelldin/Portfolio-Latest"
         target="_blank"
         rel="noopener noreferrer"
         className="stat-item stat-link"

@@ -7,10 +7,8 @@ import remarkGfm from "remark-gfm";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 
-const isGitHubPages = process.env.GITHUB_PAGES === "true";
-
 export default defineConfig({
-  base: isGitHubPages ? "/Portfolio/" : "/", // ✅ auto-adjust
+  base: "/", // ✅ root base for custom domain
   plugins: [
     {
       enforce: "pre",

@@ -9,6 +9,7 @@ import InterestsPage from "./pages/InterestsPage";
 import InterestPage from "./pages/InterestPage";
 {/*import ArchivePage from "./pages/ArchivePage";*/}
 import ContactPage from "./pages/ContactPage";
+import ResumePage from "./pages/ResumePage";
 import Stats from "./components/Stats";
 
 export default function App() {
@@ -74,6 +75,10 @@ export default function App() {
         <NavLink to="/contact" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
           contact
         </NavLink>
+        <NavLink to="/resume" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
+  resume
+</NavLink>
+
       </nav>
 
       <main className="portfolio-content">
@@ -85,6 +90,7 @@ export default function App() {
           <Route path="/interests" element={<InterestsPage />} />
           <Route path="/interests/:id" element={<InterestPage />} />
           {/*<Route path="/archive" element={<ArchivePage />} />*/}
+          <Route path="/resume" element={<ResumePage />} />
           <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </main>
